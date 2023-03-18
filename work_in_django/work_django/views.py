@@ -8,8 +8,6 @@ from .forms import ProfileForm, CommentForm, UserUpdateForm
 from .services import load_profile
 from cart.forms import CartAddProductForm
 from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -146,23 +144,6 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView, FormView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
-
-
-@login_required
-def change_password(request):
-    if request.method == 'POST':
-        p_form = PasswordChangeForm(request.user, data=request.POST)
-        if p_form.is_valid():
-            p_form.save()
-            update_session_auth_hash(request, p_form.user)
-            messages.success(request, "Password changed.")
-            return redirect("/")
-    else:
-        p_form = PasswordChangeForm(request.user)
-    data = {
-        'p_form': p_form
-    }
-    return render(request, "web/profileAvatar.html", data)
 
 
 def historyorder(request):
