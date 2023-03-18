@@ -1,0 +1,216 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block product %}
+ <div class="Middle Middle_top">
+    <div class="Middle-top">
+      <div class="wrap">
+        <div class="Middle-header">
+          <h1 class="Middle-title">Megano Product
+          </h1>
+          <ul class="breadcrumbs Middle-breadcrumbs">
+            <li class="breadcrumbs-item"><a href="index.html">home</a>
+            </li>
+            <li class="breadcrumbs-item breadcrumbs-item_current"><span>Product</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="Section">
+      <div class="wrap">
+        <div class="Product">
+          <div class="ProductCard">
+            <div class="ProductCard-look">
+              <div class="ProductCard-photo">
+                <img src="{{MEDIA_URL}}/media/{{product.image}}" alt="bigGoods.png"/>
+              </div>
+              <div class="ProductCard-picts"><a class="ProductCard-pict ProductCard-pict_ACTIVE" href="{% static 'img/content/home/bigGoods.png' %}"><img src="{% static 'img/content/home/bigGoods.png' %}" alt="bigGoods.png"/></a><a class="ProductCard-pict" href="{% static 'img/content/home/slider.png' %}"><img src="{% static 'img/content/home/slider.png' %}" alt="slider.png"/></a><a class="ProductCard-pict" href="{% static 'img/content/home/videoca.png' %}"><img src="{% static 'img/content/home/videoca.png' %}" alt="videoca.png"/></a>
+              </div>
+            </div>
+            <div class="ProductCard-desc">
+              <div class="ProductCard-header">
+                <h2 class="ProductCard-title">{{ product.title }}
+                </h2>
+                <div class="ProductCard-info">
+                  <div class="ProductCard-cost">
+                    <div class="ProductCard-price">{{ product.price }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ProductCard-text">
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod
+                  </li>
+                  <li>tempor incididunt ut labore et dolore magna aliqua. Lorem
+                  </li>
+                  <li>ipsum dolor sit ameabore et dolore magna aliqua. Lorem ipsum
+                  </li>
+                </ul>
+              </div>
+                <form  action="{% url 'cart:cart_add' product.id %}" method="POST">
+                    {% csrf_token %}
+              <div class="ProductCard-cart">
+                <div class="ProductCard-cartElement ProductCard-cartElement_amount">
+                  <div class="Amount Amount_product">
+                    <button class="Amount-remove" type="button">
+                    </button>
+                    <input class="Amount-input form-input" type="number" name="quantity" id="id_quantity" value="1" />
+                    <button class="Amount-add" type="button">
+                    </button>
+                  </div>
+                </div>
+                  <button type="submit" id="cart_btn_submit" style="border: none; background-color: white">
+                <div class="ProductCard-cartElement">
+                    <a class="btn btn_primary" href="#">
+                        <img class="btn-icon" src="{% static 'img/icons/card/cart_white.svg' %}" alt="cart_white.svg"/>
+                        Add to Cart
+                    </a>
+                </div>
+                      </button>
+              </div>
+                </form>
+              <div class="ProductCard-footer">
+                <div class="ProductCard-tags">
+                  <strong class="ProductCard-tagsTitle">Tags:
+                  </strong><a href="#">Accesories</a>,<a href="#">Creative</a>,<a href="#">Design</a>,<a href="#">Gaming</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="Tabs Tabs_default">
+            <div class="Tabs-links"><a class="Tabs-link_ACTIVE Tabs-link" href="#description"><span>Описание</span></a><a class="Tabs-link" href="#addit"><span>AdditionaL Info</span></a><a class="Tabs-link" href="#reviews"><span>Reviews ({{ product.products.all.count }})</span></a>
+            </div>
+            <div class="Tabs-wrap">
+              <div class="Tabs-block" id="description">
+                <h2>Megano Store Hystory
+                </h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer&#32;
+                  <strong>adipiscing
+                  </strong>&#32;elit doli. Aenean commodo ligula eget dolor. Aenean massa.&#32;<a href="#">Cumtipsu</a>&#32;sociis natoque penatibus et magnis dis parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eutu, pretiumem.
+                </p><img class="pict pict_right" src="/img/content/home/bigGoods.png" alt="bigGoods.png"/>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, consectetuer
+                  </li>
+                  <li>adipiscing elit doli.&#32;<em>Aenean</em>&#32;commodo ligula
+                  </li>
+                  <li>eget dolor. Aenean massa. Cumtipsu sociis
+                  </li>
+                  <li>natoque penatibus et magnis dis parturient
+                  </li>
+                  <li>montesti, nascetur ridiculus mus. Donec
+                  </li>
+                  <li>quam felis, ultricies nec, pellentesque eutu
+                  </li>
+                </ul>
+                <div class="clearfix">
+                </div>
+                <div class="table">
+                  <table>
+                    <tr>
+                      <th>Характеристика
+                      </th>
+                      <th>Значение
+                      </th>
+                    </tr>
+                    <tr>
+                      <td>ываыв
+                      </td>
+                      <td>llslssl
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="Tabs-block" id="sellers">
+                <div class="Categories Categories_product">
+                </div>
+              </div>
+              <div class="Tabs-block" id="addit">
+                <div class="Product-props">
+                  <div class="Product-prop">
+                    <strong>Lorem
+                    </strong><span> Pfizer</span>
+                  </div>
+                  <div class="Product-prop">
+                    <strong>ipsum
+                    </strong><span> Lorem ipsum dolor sit</span>
+                  </div>
+                  <div class="Product-prop">
+                    <strong>dolor sit
+                    </strong><span> 5 ans</span>
+                  </div>
+                  <div class="Product-prop">
+                    <strong>psum dolo
+                    </strong><span> 2–3 jours</span>
+                  </div>
+                </div>
+              </div>
+              <div class="Tabs-block" id="reviews">
+                <header class="Section-header">
+                  <h3 class="Section-title">{{ product.products.all.count }} REVIEWS
+                  </h3>
+                </header>
+                <div class="Comments">
+                  <div class="Comment">
+                    <div class="Comment-column Comment-column_pict">
+                      <div class="Comment-avatar">
+                      </div>
+                    </div>
+                    <div class="Comment-column">
+                        {% for obj in product.products.all %}
+                      <header class="Comment-header">
+                        <div>
+                          <strong class="Comment-title"><br>{% if obj.username  %} {{ obj.username }} {% else %} {{ obj.name }} {% endif %}
+                          </strong><span class="Comment-date">{{ obj.creat_date|date:"d-m-Y g:i a" }}</span>
+                        </div>
+                      </header>
+                      <div class="Comment-content">{{ obj.text }}
+                      </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <header class="Section-header Section-header_product">
+                  <h3 class="Section-title">Add Review
+                  </h3>
+                </header>
+                <div class="Tabs-addComment">
+                  <form class="form" id="add_form" method="post" action="{% url 'work_django:product' product.id %}">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      {% comment %} <textarea class="form-textarea"></textarea> {% endcomment %}
+                      {{ form.text }}
+                      {{ form.text.errors }}
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="row-block">
+                          {% comment %} <input class="form-input"> {% endcomment %}
+                          {{form.name}}
+                          {{form.name.errors}}
+                        </div>
+                        <div class="row-block">
+                          {% comment %} <input  class="form-input"> {% endcomment %}
+                          {{form.email}}
+                          {{form.email.errors}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn_muted" type="submit">Submit Review
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div>
+    </div>
+{% endblock product %}

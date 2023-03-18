@@ -1,0 +1,132 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="Middle">
+    <div class="Section Section_column Section_columnDesktop"  >
+      <div class="wrap">
+        <div class="Section-content">
+          <header class="Section-header">
+            <h2 class="Section-title">Popular Products
+            </h2>
+          </header>
+          <div class="Cards">
+              {% for first in first_products %}
+            <div class="Card"><a class="Card-picture" href="#"><img src="{{MEDIA_URL}}/media/{{first.image}}" alt="card.jpg"/></a>
+              <div class="Card-content">
+                <strong class="Card-title"><a href="#">{{ first.title }}</a>
+                </strong>
+                <div class="Card-description">
+                  <div class="Card-cost"><span class="Card-price">{{ first.price }}</span>
+                  </div>
+                  <div class="Card-category">Games / xbox
+                  </div>
+                    <form  action="{% url 'cart:cart_add' first.id %}" method="POST">
+                   {% csrf_token %}
+                        <input type="number" name="quantity" id="id_quantity" value="1" style="display: none;">
+                        <button type="submit"  id="cart_btn_submit">
+                            <img style="cursor: pointer" src="{% static 'img/icons/card/cart.svg' %}" alt="cart.svg"/>
+                        </button>
+                    </form>
+                </div>
+              </div>
+            </div>
+                {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Section Section_column Section_columnRight">
+      <div class="wrap">
+        <div class="Section-column">
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'img/icons/advantages/shipping.svg' %}" alt="shipping.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Shipping & Returns
+                </strong>
+                <p class="media-text">World wide shipping
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'img/icons/advantages/moneyBack.svg' %}" alt="moneyBack.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Money Back
+                </strong>
+                <p class="media-text">Guaranted payments
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'img/icons/advantages/support.svg' %}" alt="support.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Support Policy
+                </strong>
+                <p class="media-text">Fast support team
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'img/icons/advantages/quality.svg' %}" alt="quality.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Quality Guarantee
+                </strong>
+                <p class="media-text">Best guaranted items
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="Section-content">
+          <div class="Slider Slider_carousel">
+            <header class="Section-header Section-header_close">
+              <h2 class="Section-title">Limited edition
+              </h2>
+              <div class="Section-control">
+                <div class="Slider-navigate">
+                </div>
+              </div>
+            </header>
+            <div class="Slider-box Cards">
+                {% for obj in limited %}
+              <div class="Slider-item">
+                <div class="Slider-content">
+                  <div class="Card"><a class="Card-picture" href="#"><img src="{{MEDIA_URL}}/media/{{obj.image}}" alt="card.jpg"/></a>
+                    <div class="Card-content">
+                      <strong class="Card-title"><a href="#">{{ obj.title }}</a>
+                      </strong>
+                      <div class="Card-description">
+                        <div class="Card-cost"><span class="Card-price">{{ obj.price }}</span>
+                        </div>
+                        <div class="Card-category">Games / xbox
+                        </div>
+                          <form action="{% url 'cart:cart_add' obj.id %}" method="post">
+                              {% csrf_token %}
+                        <input type="number" name="quantity" id="id_quantity" value="1" style="display: none;">
+                        <button type="submit"  id="cart_btn_submit">
+                            <img style="cursor: pointer" src="{% static 'img/icons/card/cart.svg' %}" alt="cart.svg"/>
+                        </button>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock   %}
