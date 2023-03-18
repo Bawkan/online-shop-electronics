@@ -9,7 +9,6 @@ from .services import load_profile
 from cart.forms import CartAddProductForm
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
