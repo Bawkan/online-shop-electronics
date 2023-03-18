@@ -65,9 +65,6 @@ def search_product(request):
 
 
 class ProductDetail(DetailView):
-
-    """Page for Comment"""
-
     template_name = 'web/product.html'
     slug_field = 'pk'
     model = Product
@@ -117,9 +114,6 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
 
 class ProfileUpdateView(LoginRequiredMixin, TemplateView, FormView):
-
-    """Class for Profile"""
-
     u_form = UserUpdateForm()
     form = ProfileForm()
     template_name = 'web/profileAvatar.html'
