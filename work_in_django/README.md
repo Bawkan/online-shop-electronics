@@ -4,17 +4,12 @@
 
 
 ```
-
-pip3 install djangorestframework==3.14.0
-pip3 install pillow
-pip3 install django-fliter
 pip3 install -r requirements.txt
 ```
 
 ## Запуск проекта
 
 ```
-
 python manage.py runserver
 ```
 
