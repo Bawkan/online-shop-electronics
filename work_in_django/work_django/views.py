@@ -52,6 +52,23 @@ def product_list(request):
     return render(request, 'web/fitler.html', {'filter': f})
 
 
+def categories(request, slug):
+    products = Product.objects.filter(category__slug=slug)
+    sub_category = request.GET.get('subcategories', '')
+    if sub_category:
+        products = Product.objects.filter(sub_category__slug=sub_category)
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(products, 2)
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+    return render(request, 'web/catalog.html', {'page_obj': products})
+
+
 def search_product(request):
 
     if request.method == 'GET':
