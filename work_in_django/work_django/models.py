@@ -13,11 +13,19 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('work_django:gory', kwargs={'slug': self.slug})
+    
 
-    # class SubCategory(models.Model):
-    #     # title
-    #     # slug
-    #     parent = models.ForeignKey(Category, on_delete=models.CASC, related_name='sub_categories')
+    class SubCategory(models.Model):
+    image = models.ImageField(upload_to='image', blank=True, verbose_name='изображение')
+    title = models.CharField(max_length=50, verbose_name='название')
+    parent = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='sub_categories')
+    slug = models.SlugField(max_length=100)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('work_django:gory', kwargs={'slug': self.slug})
 
 
 class Product(models.Model):
