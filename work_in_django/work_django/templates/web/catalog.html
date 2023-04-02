@@ -122,18 +122,36 @@
                 {% endif %}
             </div>
             {% endblock category %}
+     {% if page_obj.has_other_pages %}
             <div class="Pagination">
-                <div class="Pagination-ins"><a class="Pagination-element Pagination-element_prev" href="#"><img
-                        src="{% static 'img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/></a><a
-                        class="Pagination-element Pagination-element_current" href="#"><span
-                        class="Pagination-text">1</span></a><a class="Pagination-element" href="#"><span
-                        class="Pagination-text">2</span></a><a class="Pagination-element" href="#"><span
-                        class="Pagination-text">3</span></a><a class="Pagination-element Pagination-element_prev"
-                                                               href="#"><img
-                        src="{% static 'img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/></a>
+                <div class="Pagination-ins">
+                    {% if page_obj.has_previous %}
+                        <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.previous_page_number }}">
+                            <img src="{% static 'img/icons/prevPagination.svg' %}" alt="prevPagination.svg"/>
+                        </a>
+                    {% endif %}
+
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <a class="Pagination-element Pagination-element_current" href="javascript:;">
+                                <span
+                                class="Pagination-text">{{ i }}</span>
+                            </a>
+                        {% else %}
+                            <a class="Pagination-element" href="?page={{ i }}">
+                                <span class="Pagination-text">{{ i }}</span>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a class="Pagination-element Pagination-element_prev" href="?page={{ page_obj.next_page_number }}">
+                            <img src="{% static 'img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
+                        </a>
+                    {% endif %}
                 </div>
             </div>
-
+        {% endif %}
         </div>
     </div>
 </div>
