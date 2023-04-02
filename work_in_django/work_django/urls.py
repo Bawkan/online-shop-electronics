@@ -4,7 +4,7 @@ from .views import (CatalogView, AccountView, ProfileView,
                     historyorder, oneorder, payment, DiscountView,
                     product_detail, ProductDetail, search_product, 
                     ProfileUpdateView, product_list,
-                    popular_product)
+                    popular_product, categories)
 
 app_name = 'work_django'
 
@@ -25,4 +25,5 @@ urlpatterns = [
     path('filter/', product_list, name='filter'),
     path('search/', search_product, name='search'),
     path('profilesave/', ProfileView.as_view(), name='avatar'),
+    path('categories/<slug:slug>/', categories, name='sub_category'),
     ]
