@@ -4,9 +4,6 @@
 {% block menu %}
 {% endblock menu %}
 
-{% block card_detail %}
-{% endblock card_detail %}
-
 {% block sorted_catalog %}
 <div class="Middle Middle_top">
 <div class="Middle-top">
@@ -93,8 +90,8 @@
             </div>
  {% block category %}
   <div class="Cards">
-                {% if mob %}
-                {% for obj in mob %}
+                {% if page_obj %}
+                {% for obj in page_obj %}
                 <div class="Card"><a class="Card-picture" href="#"><img src="{{MEDIA_URL}}/media/{{obj.image}}"
                                                                         alt="card.jpg"/></a>
                     <div class="Card-content">
@@ -122,7 +119,7 @@
                 {% endif %}
             </div>
             {% endblock category %}
-     {% if page_obj.has_other_pages %}
+        {% if page_obj.has_other_pages %}
             <div class="Pagination">
                 <div class="Pagination-ins">
                     {% if page_obj.has_previous %}
@@ -149,11 +146,14 @@
                             <img src="{% static 'img/icons/nextPagination.svg' %}" alt="nextPagination.svg"/>
                         </a>
                     {% endif %}
+
                 </div>
             </div>
         {% endif %}
+
         </div>
     </div>
 </div>
 </div>
 {% endblock sorted_catalog %}
+
