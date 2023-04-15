@@ -20,7 +20,6 @@ class ProductDetailTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-
 class ProfileTestCase(TestCase):
 
     def setUp(self):
